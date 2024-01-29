@@ -1,13 +1,32 @@
-
+// File: src/App.js
 import React from "react";
-import './../styles/App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ItemListPage from "./ItemListPage";
+import ItemDetailsPage from "./ItemDetails";
 
-const App = () => {
+function App() {
   return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
+    <Router>
+      <main>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/items">Item List</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <hr />
+
+        <Route exact path="/items">
+          <ItemListPage />
+        </Route>
+        <Route path="/items/:itemId">
+          <ItemDetailsPage />
+        </Route>
+      </main>
+    </Router>
+  );
 }
 
-export default App
+export default App;
